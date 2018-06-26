@@ -1,0 +1,26 @@
+Source: groupoffice-mailserver-antispam
+Section: mail
+Priority: extra
+Maintainer: Merijn Schering <mschering@intermesh.nl> 
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.2
+Homepage: https://www.group-office.com
+
+Package: groupoffice-mailserver-antispam
+Architecture: all
+Depends:
+  groupoffice-mailserver,
+  redis-server,
+  rspamd (>=1.7.6),
+  clamav-daemon,
+	${misc:Depends},
+	${perl:Depends},
+	dbconfig-common,
+	ucf (>= 0.28)
+Description: Group-Office mailserver antispam services
+ Group-Office is a web based groupware and CRM application
+ Take your office online. Share projects, calendars, files and e-mail online 
+ with co-workers and clients. Easy to use and fully customizable, Group-Office 
+ takes online collaboration to the next level.
+
+

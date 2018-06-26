@@ -1,0 +1,6 @@
+update-rc.d rspamd defaults
+update-rc.d clamav-daemon defaults
+
+
+invoke-rc.d postfix restart
+invoke-rc.d rspamd restart

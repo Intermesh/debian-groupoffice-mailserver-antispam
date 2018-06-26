@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+
+a2enmod proxy
+a2enmod proxy_http
+
+a2enconf rspamd
+
+
+# SASL settings
+# This will make Postfix authenticate users via Dovecot. Users mail clients will connect directly to Postfix for sending mail and we need them to authenticate.
+postconf -e 'smtpd_milters = inet:localhost:11332' && \
+postconf -e 'milter_default_action = accept'
+
+update-rc.d rspamd defaults
+update-rc.d clamav-daemon defaults
+
+
+invoke-rc.d postfix restart
+invoke-rc.d rspamd restart
+invoke-rc.d clamav-daemon restart

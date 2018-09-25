@@ -1,4 +1,4 @@
-etc/rspamd/local.d/groupoffice.inc etc/rspamd/local.d
+etc/rspamd/local.d/worker-proxy.inc etc/rspamd/local.d
 etc/rspamd/override.d/antivirus.conf etc/rspamd/override.d
 etc/apache2/conf-available/rspamd.conf etc/apache2/conf-available
 

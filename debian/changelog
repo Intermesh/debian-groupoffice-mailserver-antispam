@@ -1,5 +1,5 @@
-groupoffice-mailserver-antispam (6.6.1) sixsix; urgency=medium
+groupoffice-mailserver-antispam (6.8.1) sixeight; urgency=medium
 
   * Changes can be found in /usr/share/groupoffice/changelog.md
 
- -- Intermesh BV (Developer key) <info@intermesh.nl> Mon, 24 Jan 2022 16:20:00 +0100
+ -- Intermesh BV (Developer key) <info@intermesh.nl> Tue, 12 Sep 2023 16:20:00 +0100

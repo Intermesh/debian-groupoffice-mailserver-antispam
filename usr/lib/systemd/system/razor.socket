@@ -1,0 +1,12 @@
+# /usr/lib/systemd/system/razor.socket
+# See https://www.rspamd.com/doc/modules/external_services.html#razor-specific-details
+
+[Unit]
+Description=Razor socket
+
+[Socket]
+ListenStream=127.0.0.1:11342
+Accept=yes
+
+[Install]
+WantedBy=sockets.target

@@ -1,0 +1,27 @@
+# /usr/lib/systemd/system/razor@.service
+# See https://www.rspamd.com/doc/modules/external_services.html#razor-specific-details
+
+[Unit]
+Description=Razor Socket Service
+Requires=razor.socket
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c '/usr/bin/razor-check && /usr/bin/echo -n "spam" || /usr/bin/echo -n "ham"'
+StandardInput=socket
+StandardError=journal
+TimeoutStopSec=10
+
+User=_rspamd
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+PrivateUsers=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

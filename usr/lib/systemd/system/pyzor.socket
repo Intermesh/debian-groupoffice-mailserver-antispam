@@ -1,0 +1,11 @@
+# /usr/lib/systemd/system/pyzor.socket
+# See https://www.rspamd.com/doc/modules/external_services.html#pyzor-specific-details
+[Unit]
+Description=Pyzor socket
+
+[Socket]
+ListenStream=127.0.0.1:5953
+Accept=yes
+
+[Install]
+WantedBy=sockets.target

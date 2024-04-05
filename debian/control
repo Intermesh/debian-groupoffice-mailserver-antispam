@@ -13,6 +13,8 @@ Depends:
   redis-server,
   rspamd (>=1.7.6),
   clamav-daemon,
+  pyzor,
+  razor,
 	${misc:Depends},
 	${perl:Depends},
 	dbconfig-common,

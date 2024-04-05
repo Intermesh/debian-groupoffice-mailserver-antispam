@@ -15,7 +15,17 @@ postconf -e 'milter_default_action = accept'
 update-rc.d rspamd defaults
 update-rc.d clamav-daemon defaults
 
-
 invoke-rc.d postfix restart
 invoke-rc.d rspamd restart
 invoke-rc.d clamav-daemon restart
+
+
+mkdir /var/lib/rspamd/.pyzor
+chown _rspamd:_rspamd /var/lib/rspamd/.pyzor
+
+systemctl daemon-reload
+systemctl enable razor.socket
+systemctl start razor.socket
+
+systemctl enable pyzor.socket
+systemctl start pyzor.socket

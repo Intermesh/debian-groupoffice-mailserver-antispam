@@ -5,7 +5,7 @@ To build:
 1. Edit debian/changelog with version and repo twentysixzero.
 2. run inside directory:
    ```
-   debuild --no-lintian -b
+   debuild --no-lintian -A
    ```
 3. run:
    ```

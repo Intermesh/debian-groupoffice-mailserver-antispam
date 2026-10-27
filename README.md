@@ -9,7 +9,12 @@ To build:
    ```
 3. run:
    ```
-   reprepro -b /var/www/build/deploy/reprepro include twentysixzero ../groupoffice-mailserver-antispam_25.0.3_amd64.changes
+   reprepro -b /var/www/build/groupoffice/build/deploy/reprepro/ include twentysixzero ../groupoffice-mailserver-antispam_25.0.3_amd64.changes
+   ```
+
+   or for testing:
+   ```
+   reprepro -b /var/www/build/groupoffice/build/deploy/reprepro/ include testing ../groupoffice-mailserver-antispam_25.1.0_amd64.changes
    ```
 4. Repeat all steps with 63-php-71 in debian/changelog and command
 

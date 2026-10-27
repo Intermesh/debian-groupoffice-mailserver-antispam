@@ -17,7 +17,6 @@ Depends:
   pyzor,
   razor,
 	${misc:Depends},
-	${perl:Depends},
 	dbconfig-common,
 	ucf (>= 0.28)
 Description: Group-Office mailserver antispam services

@@ -9,7 +9,8 @@ a2enconf rspamd
 
 # SASL settings
 # This will make Postfix authenticate users via Dovecot. Users mail clients will connect directly to Postfix for sending mail and we need them to authenticate.
-postconf -e 'smtpd_milters = inet:localhost:11332' && \
+# Scan with rspamd and sign with opendkim from groupoffice-mailserver
+postconf -e 'smtpd_milters = inet:localhost:11332, unix:opendkim/opendkim.sock' && \
 postconf -e 'milter_default_action = accept'
 
 update-rc.d rspamd defaults

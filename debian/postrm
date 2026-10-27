@@ -1,3 +1,13 @@
+#!/bin/sh
+
+case "$1" in
+  remove|purge)
+    rm -f /etc/dovecot/conf.d/99-groupoffice-antispam.conf
+    rm -f /var/lib/dovecot/sieve/report-spam.svbin /var/lib/dovecot/sieve/report-ham.svbin
+    invoke-rc.d dovecot restart || true
+    ;;
+esac
+
 update-rc.d rspamd defaults
 update-rc.d clamav-daemon defaults
 

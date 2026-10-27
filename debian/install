@@ -5,3 +5,7 @@ usr/lib/systemd/system/razor@.service usr/lib/systemd/system/razor@.service
 usr/lib/systemd/system/razor.socket usr/lib/systemd/system/razor.socket
 usr/lib/systemd/system/pyzor@.service usr/lib/systemd/system/pyzor@.service
 usr/lib/systemd/system/pyzor.socket usr/lib/systemd/system/pyzor.socket
+usr/share/groupoffice-mailserver-antispam/dovecot-antispam.conf usr/share/groupoffice-mailserver-antispam
+etc/dovecot/rspamd-controller.password etc/dovecot
+var/lib/dovecot/sieve var/lib/dovecot
+var/lib/dovecot/sieve-pipe var/lib/dovecot

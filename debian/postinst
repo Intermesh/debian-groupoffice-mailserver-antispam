@@ -15,12 +15,21 @@ postconf -e 'milter_default_action = accept'
 update-rc.d rspamd defaults
 update-rc.d clamav-daemon defaults
 
+# Spam and ham learning when users move mail in and out of the Spam folder
+ln -sf /usr/share/groupoffice-mailserver-antispam/dovecot-antispam.conf /etc/dovecot/conf.d/99-groupoffice-antispam.conf
+invoke-rc.d dovecot restart
+
+# Precompile the learning scripts. The imap process runs as vmail and can't write the binaries itself.
+# This must be done after the restart because sievec uses the config of the running dovecot.
+sievec /var/lib/dovecot/sieve/report-spam.sieve
+sievec /var/lib/dovecot/sieve/report-ham.sieve
+
 invoke-rc.d postfix restart
 invoke-rc.d rspamd restart
 invoke-rc.d clamav-daemon restart
 
 
-mkdir /var/lib/rspamd/.pyzor
+mkdir -p /var/lib/rspamd/.pyzor
 chown _rspamd:_rspamd /var/lib/rspamd/.pyzor
 
 systemctl daemon-reload

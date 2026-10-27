@@ -10,6 +10,7 @@ Package: groupoffice-mailserver-antispam
 Architecture: all
 Depends:
   groupoffice-mailserver,
+  dovecot-sieve (>=2.4.0),
   redis-server,
   rspamd (>=1.7.6),
   clamav-daemon,

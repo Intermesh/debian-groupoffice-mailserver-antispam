@@ -56,10 +56,27 @@ if [ -z "${RSPAMD_CONTROLLER_HOST}" ] ; then
 		# pass password through pipe; printf is a builtin and won't be
 		# visible in ps; the generated path should look like /dev/fd/...
 		# and always start with a '/'
-		exec /usr/bin/rspamc -P <(printf "%s\n" "${password}") "${args[@]}" -d "${deliver_to}" "learn_${action}"
+		output=$(/usr/bin/rspamc -P <(printf "%s\n" "${password}") "${args[@]}" -d "${deliver_to}" "learn_${action}" 2>&1)
 	else
-		exec /usr/bin/rspamc "${args[@]}" -d "${deliver_to}" "learn_${action}"
+		output=$(/usr/bin/rspamc "${args[@]}" -d "${deliver_to}" "learn_${action}" 2>&1)
 	fi
+	status=$?
+
+	if [ ${status} -ne 0 ]; then
+		# Moving a message in and out of Spam repeatedly is not an error
+		case "${output}" in
+		*"already learned"*)
+			logger -p mail.debug "rspamc learn_${action}: message already learned"
+			exit 0
+			;;
+		esac
+
+		# Dovecot doesn't log the program output so log it here
+		logger -p mail.err "rspamc learn_${action} failed for ${deliver_to}: ${output}"
+		exit ${status}
+	fi
+
+	logger -p mail.info "rspamc learn_${action} for ${deliver_to}"
 else
 	logger -p mail.debug "Using HTTP connection to rspamd"
 

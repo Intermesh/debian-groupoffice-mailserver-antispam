@@ -14,8 +14,19 @@ To build:
 4. Repeat all steps with 63-php-71 in debian/changelog and command
 
 
-Build with docker (Replace /Volumes/Projects with your output dir):
+Build with docker (Replace /Volumes/Projects with your output dir).
+
+Create the build image once (repeat to update it):
 
 ```
-docker run --rm -v /Volumes/Projects:/build -w /build/debian-groupoffice-mailserver-antispam debian:trixie bash -c 'apt-get update && apt-get install -y devscripts debhelper && debuild --no-lintian -b -us -uc'
+docker build -t groupoffice-debbuild - <<'EOF'
+FROM debian:trixie
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential devscripts debhelper fakeroot && rm -rf /var/lib/apt/lists/*
+EOF
+```
+
+Then build the package:
+
+```
+docker run --rm -v /Volumes/Projects:/build -w /build/debian-groupoffice-mailserver-antispam groupoffice-debbuild debuild --no-lintian -b -us -uc
 ```

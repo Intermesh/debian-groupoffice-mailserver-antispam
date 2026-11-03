@@ -20,7 +20,7 @@ invoke-rc.d rspamd restart
 invoke-rc.d clamav-daemon restart
 
 
-mkdir /var/lib/rspamd/.pyzor
+mkdir -p /var/lib/rspamd/.pyzor
 chown _rspamd:_rspamd /var/lib/rspamd/.pyzor
 
 systemctl daemon-reload

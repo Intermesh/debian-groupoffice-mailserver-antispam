@@ -1,7 +1,4 @@
 etc/rspamd/local.d/worker-proxy.inc etc/rspamd/local.d
 etc/rspamd/local.d/antivirus.conf etc/rspamd/local.d
 etc/apache2/conf-available/rspamd.conf etc/apache2/conf-available
-usr/lib/systemd/system/razor@.service usr/lib/systemd/system/razor@.service
-usr/lib/systemd/system/razor.socket usr/lib/systemd/system/razor.socket
-usr/lib/systemd/system/pyzor@.service usr/lib/systemd/system/pyzor@.service
-usr/lib/systemd/system/pyzor.socket usr/lib/systemd/system/pyzor.socket
+usr/lib/systemd/system usr/lib/systemd

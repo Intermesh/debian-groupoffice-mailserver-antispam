@@ -1,6 +1,12 @@
-update-rc.d rspamd defaults
-update-rc.d clamav-daemon defaults
+#!/bin/sh
+set -e
 
+case "$1" in
+	remove|purge)
+		postconf -e 'smtpd_milters = unix:opendkim/opendkim.sock'
+		invoke-rc.d postfix restart
+		invoke-rc.d rspamd restart || true
+		;;
+esac
 
-invoke-rc.d postfix restart
-invoke-rc.d rspamd restart
+#DEBHELPER#

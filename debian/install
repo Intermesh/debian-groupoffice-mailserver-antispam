@@ -9,3 +9,4 @@ usr/share/groupoffice-mailserver-antispam/dovecot-antispam.conf usr/share/groupo
 etc/dovecot/rspamd-controller.password etc/dovecot
 var/lib/dovecot/sieve var/lib/dovecot
 var/lib/dovecot/sieve-pipe var/lib/dovecot
+usr/lib/systemd/system usr/lib/systemd

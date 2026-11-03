@@ -1,18 +1,14 @@
 #!/bin/sh
+set -e
 
 case "$1" in
-  remove|purge)
-    # Only sign with opendkim again
-    postconf -e 'smtpd_milters = unix:opendkim/opendkim.sock' || true
-    rm -f /etc/dovecot/conf.d/99-groupoffice-antispam.conf
+	remove|purge)
+		postconf -e 'smtpd_milters = unix:opendkim/opendkim.sock'
+		rm -f /etc/dovecot/conf.d/99-groupoffice-antispam.conf
     rm -f /var/lib/dovecot/sieve/report-spam.svbin /var/lib/dovecot/sieve/report-ham.svbin
-    invoke-rc.d dovecot restart || true
-    ;;
+		invoke-rc.d postfix restart
+		invoke-rc.d rspamd restart || true
+		;;
 esac
 
-update-rc.d rspamd defaults
-update-rc.d clamav-daemon defaults
-
-
-invoke-rc.d postfix restart
-invoke-rc.d rspamd restart
+#DEBHELPER#

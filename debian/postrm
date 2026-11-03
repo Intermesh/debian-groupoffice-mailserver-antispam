@@ -5,8 +5,9 @@ case "$1" in
 	remove|purge)
 		postconf -e 'smtpd_milters = unix:opendkim/opendkim.sock'
 		rm -f /etc/dovecot/conf.d/99-groupoffice-antispam.conf
-    rm -f /var/lib/dovecot/sieve/report-spam.svbin /var/lib/dovecot/sieve/report-ham.svbin
+		rm -f /var/lib/dovecot/sieve/report-spam.svbin /var/lib/dovecot/sieve/report-ham.svbin
 		invoke-rc.d postfix restart
+		invoke-rc.d dovecot restart
 		invoke-rc.d rspamd restart || true
 		;;
 esac

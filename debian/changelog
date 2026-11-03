@@ -1,5 +1,5 @@
-groupoffice-mailserver-antispam (25.0.3) twentyfivezero; urgency=medium
+groupoffice-mailserver-antispam (26.0.1) twentysixzero; urgency=medium
 
   * Changes can be found in /usr/share/groupoffice/changelog.md
 
- -- Intermesh BV (Developer key) <info@intermesh.nl> Mon, 14 Apr 2025 16:20:00 +0100
+ -- Intermesh BV (Developer key) <info@intermesh.nl>  Tue, 03 Nov 2026 16:20:00 +0100
